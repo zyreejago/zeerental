@@ -152,14 +152,42 @@ interface Store {
   nextBookingId: number;
 }
 
-const STORAGE_KEY = "zeerental:store:v3";
+const STORAGE_KEY = "zeerental:store:v4";
 const ACTIVE_STATUSES: readonly string[] = [
   "menunggu",
   "terkonfirmasi",
   "berlangsung",
 ];
 
+// Tanggal seed dibuat relatif terhadap hari ini supaya demo selalu terlihat
+// hidup: selalu ada serah terima hari ini dan booking berikutnya, kapan pun
+// demo dibuka. Helper di bawah meniru todayStr/addDaysStr/fmtDate di lib.ts
+// (api.ts tidak boleh mengimpor lib.ts karena lib.ts mengimpor tipe dari sini).
+function seedTodayStr(d = new Date()): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function seedAddDays(dateStr: string, days: number): string {
+  const d = new Date(`${dateStr}T00:00:00`);
+  d.setDate(d.getDate() + days);
+  return seedTodayStr(d);
+}
+
+function seedFmtDate(dateStr: string): string {
+  const d = new Date(`${dateStr}T00:00:00`);
+  return d.toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
 function seedStore(): Store {
+  const t = seedTodayStr();
+  const d = (offset: number) => seedAddDays(t, offset);
   return {
     settings: {
       businessName: "ZeeRental",
@@ -249,7 +277,7 @@ function seedStore(): Store {
         cover: "suv",
         imageUrl: UNIT_PHOTO,
         featured: false,
-        notes: "Sedang servis berkala, estimasi selesai 24 Okt 2026.",
+        notes: `Sedang servis berkala, estimasi selesai ${seedFmtDate(d(3))}.`,
       },
       {
         id: 5,
@@ -340,8 +368,8 @@ function seedStore(): Store {
         customerName: "Jack Thompson",
         customerPhone: "+61 412 555 908",
         nationality: "WNA",
-        startDate: "2026-10-19",
-        endDate: "2026-10-24",
+        startDate: d(-2),
+        endDate: d(3),
         days: 5,
         totalPrice: 500000,
         deposit: 1500000,
@@ -358,8 +386,8 @@ function seedStore(): Store {
         customerName: "Made Wirawan",
         customerPhone: "081339028475",
         nationality: "WNI",
-        startDate: "2026-10-20",
-        endDate: "2026-10-23",
+        startDate: d(-1),
+        endDate: d(2),
         days: 3,
         totalPrice: 1050000,
         deposit: 500000,
@@ -376,8 +404,8 @@ function seedStore(): Store {
         customerName: "Ni Luh Ayu Kartika",
         customerPhone: "087761204533",
         nationality: "WNI",
-        startDate: "2026-10-25",
-        endDate: "2026-10-28",
+        startDate: d(4),
+        endDate: d(7),
         days: 3,
         totalPrice: 750000,
         deposit: 300000,
@@ -394,8 +422,8 @@ function seedStore(): Store {
         customerName: "Emma Wilson",
         customerPhone: "+44 7700 900321",
         nationality: "WNA",
-        startDate: "2026-10-28",
-        endDate: "2026-11-02",
+        startDate: d(7),
+        endDate: d(12),
         days: 5,
         totalPrice: 2750000,
         deposit: 3000000,
@@ -412,8 +440,8 @@ function seedStore(): Store {
         customerName: "Budi Santoso",
         customerPhone: "085792114608",
         nationality: "WNI",
-        startDate: "2026-10-05",
-        endDate: "2026-10-08",
+        startDate: d(-9),
+        endDate: d(-6),
         days: 3,
         totalPrice: 240000,
         deposit: 200000,
@@ -430,8 +458,8 @@ function seedStore(): Store {
         customerName: "Lucas Meyer",
         customerPhone: "+49 171 555 2034",
         nationality: "WNA",
-        startDate: "2026-10-21",
-        endDate: "2026-10-23",
+        startDate: d(0),
+        endDate: d(2),
         days: 2,
         totalPrice: 140000,
         deposit: 1000000,
@@ -441,9 +469,45 @@ function seedStore(): Store {
         withDriver: false,
         notes: "",
       },
+      {
+        id: 7,
+        vehicleId: 5,
+        vehicleName: "Honda Vario 160",
+        customerName: "Sari Dewi",
+        customerPhone: "082144778899",
+        nationality: "WNI",
+        startDate: d(-3),
+        endDate: d(0),
+        days: 3,
+        totalPrice: 240000,
+        deposit: 200000,
+        status: "berlangsung",
+        pickupLocation: "Ubud",
+        dropoffLocation: "Ubud",
+        withDriver: false,
+        notes: "Pengembalian sore hari.",
+      },
+      {
+        id: 8,
+        vehicleId: 1,
+        vehicleName: "Toyota Avanza 1.5 G",
+        customerName: "Sarah Johnson",
+        customerPhone: "+1 415 555 0132",
+        nationality: "WNA",
+        startDate: d(9),
+        endDate: d(11),
+        days: 2,
+        totalPrice: 700000,
+        deposit: 2000000,
+        status: "terkonfirmasi",
+        pickupLocation: "Seminyak",
+        dropoffLocation: "Seminyak",
+        withDriver: false,
+        notes: "",
+      },
     ],
     nextVehicleId: 9,
-    nextBookingId: 7,
+    nextBookingId: 9,
   };
 }
 

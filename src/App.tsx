@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "./api";
 import { Landing } from "./Landing";
@@ -17,9 +17,7 @@ const NAV_ITEMS = [
 
 export function App() {
   const [view, setView] = useState<View>("situs");
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const lastY = useRef(0);
 
   const settings = useQuery({
     queryKey: ["settings"],
@@ -29,14 +27,7 @@ export function App() {
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 8);
-      if (y > lastY.current && y > 180) {
-        setHidden(true);
-      } else if (y < lastY.current) {
-        setHidden(false);
-      }
-      lastY.current = y;
+      setScrolled(window.scrollY > 8);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -62,11 +53,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-paper font-sans text-ink">
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${
-          hidden ? "-translate-y-full" : "translate-y-0"
-        }`}
-      >
+      <header className="fixed inset-x-0 top-0 z-50">
         <div
           className={`transition-colors duration-300 ${
             scrolled
