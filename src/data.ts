@@ -172,25 +172,31 @@ export const STEPS: Step[] = [
   {
     title: "Chat dan pilih unit",
     duration: "±5 menit",
-    text: "Ceritakan tanggal, lokasi menginap, dan mau jalan ke mana saja. Kami bantu pilih unit yang paling masuk akal, bukan yang paling mahal.",
+    text: "Ceritakan tanggal, lokasi menginap, dan rencana perjalanan Anda. Kami jawab dengan unit yang tersedia dan harga finalnya, bukan harga kira-kira.",
     yourPart: "tulis seadanya lewat WhatsApp, tidak perlu format khusus.",
   },
   {
-    title: "Kami antar ke lokasi Anda",
+    title: "Sepakati harga dan deposit",
+    duration: "±10 menit",
+    text: "Total harga dan deposit kami tulis jelas di chat sebelum Anda membayar apa pun. Kalau sudah setuju, jadwal unit itu kami kunci untuk Anda.",
+    yourPart: "cek rinciannya, dan tanya dulu kalau ada yang kurang jelas.",
+  },
+  {
+    title: "Unit kami antar",
     duration: "±15 menit di area kota",
-    text: "Unit datang bersih dan dicek bareng di tempat. Dokumen difoto, deposit ditransfer, selesai.",
+    text: "Mobil atau motor datang bersih, bensin cukup, dan sudah dicek satu-satu. Serah terima di hotel, villa, atau lobi bandara, dokumen cukup difoto.",
     yourPart: "siapkan KTP dan SIM (WNI) atau paspor (WNA) untuk difoto.",
   },
   {
     title: "Jalan dengan tenang",
     duration: "selama masa sewa",
-    text: "Keliling Bali sesuka Anda. Kalau ada bunyi aneh, ban kempes, atau sekadar butuh rekomendasi warung, WhatsApp kami tetap aktif 24 jam.",
-    yourPart: "hubungi kami kapan saja kalau ada apa-apa di jalan.",
+    text: "Keliling Bali sesuka Anda. Kalau ada bunyi aneh, ban kempes, atau sekadar butuh rekomendasi warung, WhatsApp kami aktif 24 jam.",
+    yourPart: "kabari kami kalau ada apa-apa di jalan, jangan diam saja.",
   },
   {
     title: "Kami jemput, deposit kembali",
     duration: "maks. 5 hari kerja",
-    text: "Di akhir sewa kami yang datang menjemput unitnya. Deposit kembali ke rekening Anda setelah pengecekan, lengkap dengan rinciannya.",
+    text: "Di akhir sewa kami yang datang menjemput unitnya. Deposit kembali utuh setelah pengecekan, dan kalau ada potongan, rinciannya kami kirim ke Anda lebih dulu.",
     yourPart: "tidak perlu ke mana-mana, kami yang datang.",
   },
 ];
