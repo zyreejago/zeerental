@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #faf8f2;
+  --color-cream: #f1ecdf;
+  --color-ink: #141519;
+  --color-ink-soft: #232529;
+  --color-smoke: #5d6066;
+  --color-line: #e2ddd0;
+  --color-signal: #ff4d00;
+  --color-signal-dark: #d63e00;
+  --color-palm: #175e4c;
+
+  --font-display: "Archivo", "Inter", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: #fff;
+}
+
+/* Angka langkah besar dengan garis tepi saja, gaya katalog. */
+.step-number {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-ink);
+}
+
+/* Garis bawah tulisan tangan untuk kata yang ditekankan di hero. */
+.hero-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 0.09em;
+  background-repeat: no-repeat;
+  background-position: 0 96%;
+  color: var(--color-signal);
+}
