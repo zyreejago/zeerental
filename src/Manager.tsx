@@ -141,9 +141,9 @@ function DashboardView({ goTab }: { goTab: (t: Tab) => void }) {
           <path d="M12 8h.01" />
         </svg>
         <p className="text-sm leading-relaxed text-[var(--text)]">
-          <span className="font-bold">Mode demo.</span> Tulisan dan data pada
-          halaman ini hanya sekedar demo, dan bisa dikustomisasi sesuai
-          permintaan Anda.
+          <span className="font-bold">Mode demo.</span> Tulisan, data, dan
+          layout pada halaman ini hanya sekedar demo, dan semuanya bisa
+          dikustomisasi sesuai permintaan Anda.
         </p>
       </div>
 
