@@ -393,7 +393,7 @@ export function Landing({
         </p>
         <div className="marquee-mask relative mt-4 overflow-hidden">
           <div className="animate-marquee flex w-max items-center">
-            {[...AREAS, ...AREAS].map((a, i) => (
+            {[...AREAS, ...AREAS, ...AREAS, ...AREAS].map((a, i) => (
               <span
                 key={`${a}-${i}`}
                 className="flex items-center whitespace-nowrap font-display text-lg font-bold text-ink"
