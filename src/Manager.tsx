@@ -125,6 +125,28 @@ function DashboardView({ goTab }: { goTab: (t: Tab) => void }) {
         })}
       </p>
 
+      <div className="mt-5 flex items-start gap-3 rounded-2xl border border-[var(--accent)]/30 bg-[var(--accent)]/10 p-4 sm:p-5">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent)]"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 16v-4" />
+          <path d="M12 8h.01" />
+        </svg>
+        <p className="text-sm leading-relaxed text-[var(--text)]">
+          <span className="font-bold">Mode demo.</span> Tulisan dan data pada
+          halaman ini hanya sekedar demo, dan bisa dikustomisasi sesuai
+          permintaan Anda.
+        </p>
+      </div>
+
       {dash.isPending && (
         <p className="mt-8 text-sm text-[var(--dim)]">Memuat ringkasan…</p>
       )}
